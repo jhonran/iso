@@ -177,11 +177,12 @@
         </li>
         <li class="treeview"> <a href="#"> <i class="icon-drop"></i> <span>Jenis Uji</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('');?>"><i class="fa fa-angle-right"></i>Kelompok Jenis Uji</a></li>
+            <li><a href="<?php echo base_url('kelompok_jenis_uji');?>"><i class="fa fa-angle-right"></i>Kelompok Jenis Uji</a></li>
             <li><a href="<?php echo base_url('jenis_uji');?>"><i class="fa fa-angle-right"></i>Data Jenis Uji</a></li>
           </ul>
         </li>
-        
+        <li><a href="<?php echo base_url('operator');?>"><i class="icon-user"></i> <span>Data User</span></a></li>
+        <li><a href="<?php echo base_url('instruksi_kerja');?>"><i class="icon-user"></i> <span>Instruksi Kerja</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar --> 
