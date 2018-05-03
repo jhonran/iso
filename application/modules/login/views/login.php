@@ -31,15 +31,15 @@
 <div class="login-box sty1">
   <div class="login-box-body sty1">
   <div class="login-logo">
-    <h6>Sistem Informasi Laboratorium Kimia</h6>
+    <img src="<?php echo base_url();?>assets/img/logo.png" alt="" class="img-responsive">
   </div>
     <?php echo form_open('login/proses_login', ''); ?>
       <div class="form-group has-feedback">
-        <input type="text" name="username" placeholder="Username" class="form-control">
+        <input type="text" name="username" placeholder="Username" class="form-control sty1">
         <?php echo form_error('username', '<div class="text-danger"><small>', '</small></div>');?>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password" placeholder="Password" class="form-control">
+        <input type="password" name="password" placeholder="Password" class="form-control sty1">
         <?php echo form_error('password', '<div class="text-danger"><small>', '</small></div>');?>
       </div>
       <div>

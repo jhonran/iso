@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" />
 
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Cabin:300,400,500,600,700" rel="stylesheet" />
 
 <!-- Theme style -->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" />
@@ -35,7 +35,7 @@
     <!-- Logo --> 
     <a href="<?php echo base_url('dashboard');?>" class="logo blue-bg"> 
     <!-- mini logo for sidebar mini 50x50 pixels --> 
-    
+    <span class="logo-lg"><img src="<?php echo base_url();?>assets/img/logo.png" alt="" class="img-responsive" /></span>
     <!-- logo for regular state and mobile devices --> 
      </a> 
     <!-- Header Navbar -->
@@ -165,24 +165,40 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN MENU</li>
         <li><a href="<?php echo base_url('dashboard');?>"><i class="icon-grid"></i> <span>Dashboard</span></a></li>
+        <?php if ($this->session->userdata('is_level_user') == 1) {
+        ?>
+        <li><a href="<?php echo base_url('operator');?>"><i class="icon-user"></i> <span>Data User</span></a></li>
+        <li class="treeview"> <a href="#"> <i class="icon-settings"></i> <span>Setting</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('database');?>"><i class="fa fa-angle-right"></i> <span>Database</span></a></li>
+            <li><a href="<?php echo base_url('log_data');?>"><i class="fa fa-angle-right"></i> <span>Log Data</span></a></li>
+          </ul>
+        </li>
+
+        <li class="treeview"> <a href="#"> <i class="icon-layers"></i> <span>Data Master</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('jenis_uji');?>"><i class="fa fa-angle-right"></i>Jenis Uji</a></li>
+            <li><a href="<?php echo base_url('kelompok_jenis_uji');?>"><i class="fa fa-angle-right"></i>Kelompok Jenis Uji</a></li>
+            <li><a href="<?php echo base_url('klien');?>"><i class="fa fa-angle-right"></i>Klien</a></li>
+            <li><a href="<?php echo base_url('level_user');?>"><i class="fa fa-angle-right"></i>Level User</a></li>
+          </ul>
+        </li>
+        <?php
+        } else if($this->session->userdata('is_level_user') == 2) {
+        ?>
         <li class="treeview"> <a href="#"> <i class="icon-note"></i> <span>Analisis</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url('permintaan_analisis');?>"><i class="fa fa-angle-right"></i>Data Permintaan Analisis</a></li>
           </ul>
         </li>
-        <li class="treeview"> <a href="#"> <i class="icon-user"></i> <span>Klien</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('klien');?>"><i class="fa fa-angle-right"></i>Data Klien</a></li>
-          </ul>
-        </li>
-        <li class="treeview"> <a href="#"> <i class="icon-drop"></i> <span>Jenis Uji</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('kelompok_jenis_uji');?>"><i class="fa fa-angle-right"></i>Kelompok Jenis Uji</a></li>
-            <li><a href="<?php echo base_url('jenis_uji');?>"><i class="fa fa-angle-right"></i>Data Jenis Uji</a></li>
-          </ul>
-        </li>
-        <li><a href="<?php echo base_url('operator');?>"><i class="icon-user"></i> <span>Data User</span></a></li>
         <li><a href="<?php echo base_url('instruksi_kerja');?>"><i class="icon-user"></i> <span>Instruksi Kerja</span></a></li>
+        <?php
+        } else {
+
+        } ?>
+        
+        
+        
       </ul>
     </section>
     <!-- /.sidebar --> 

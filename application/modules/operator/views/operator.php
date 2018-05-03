@@ -12,7 +12,8 @@
                 <thead>
                   <tr>
                     <th>Nomor</th>
-                    <th>Nama User</th>
+                    <th>Username</th>
+                    <th>Hak Akses</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -22,6 +23,11 @@
                             echo "<tr>";
                             echo "<td>".$no."</td>";
                             echo "<td>".$row->username."</td>";
+                            foreach ($data_level_user->result() as $row_level_user) {
+                                if ($row->level_user == $row_level_user->id_level_user) {
+                                    echo "<td>".$row_level_user->nama_level_user."</td>";
+                                }
+                            }
                             echo "<td>
                             <button type='button' class='btn btn-outline-warning btn-xs' onClick='edit(".$row->id_user.")' ><i class='icon-pencil'></i></button>
                             <button type='button' class='btn btn-outline-danger btn-xs' onClick=del('".$row->id_user."') ><i class='icon-trash'></i></button>
@@ -72,6 +78,7 @@ function edit(id){
 			$("#editModal").modal('show');
 			$("#id_user").val(response['id_user']);
 			$("#username_edit").val(response['username']);
+            $('#id_level_user').val(response['level_user']);
 		}
 	);
 }
@@ -109,6 +116,22 @@ function del(id){
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
                     </div>
                 </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-sm-3 col-xs-12">Hak Akses</label>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <select name="id_level_user" id="level_user" class="form-control">
+                            <option value="">-- Pilih Hak Akses --</option>
+                            <?php 
+                                foreach($data_level_user->result() as $row) {
+                            ?>
+                                <option value="<?php echo $row->id_level_user ?>"><?php echo $row->nama_level_user; ?></option>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
 			</form>
             </div>
             <div class="modal-footer">
@@ -140,6 +163,24 @@ function del(id){
                     <label class="control-label col-sm-3 col-sm-3 col-xs-12">Password</label>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="password" class="form-control" id="password_edit" name="password" placeholder="Password" />
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3 col-sm-3 col-xs-12">Hak Akses</label>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <select name="id_level_user" id="id_level_user" class="form-control">
+                            <option value="">-- Pilih Hak Akses --</option>
+                            <?php 
+                                foreach($data_level_user->result() as $row) {
+                            ?>
+                                <option value="<?php echo $row->id_level_user ?>"><?php echo $row->nama_level_user; ?></option>
+                            <?php
+                                }
+                            ?>
+                        </select>
+                                
+                        </select>
                     </div>
                 </div>
 			</form>

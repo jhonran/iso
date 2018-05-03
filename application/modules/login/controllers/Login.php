@@ -13,7 +13,7 @@ class Login extends CI_Controller
 	}
 	public function index() {
 		if($this->session->userdata('is_login') == TRUE) {
-			$this->load->view('dashboard');
+			$this->load->view('dashboard/dashboard');
 		} else {
 			$this->load->view('login');
 		}
@@ -25,9 +25,15 @@ class Login extends CI_Controller
 					$session = array(
 						'is_login' => true,
 						'is_username' => $db->username,
-						'is_id' => $db->id_user
+						'is_id' => $db->id_user,
+						'is_level_user' => $db->level_user
 					);	
 					$this->session->set_userdata($session);
+					$tambah_log_data = array(
+						'log_date' => date('Y-m-d'),
+						'log_user' => $this->session->userdata('is_username'),
+						'log_desc' => 'Login' );
+					$this->m_login->tambah_log_data($tambah_log_data);
 					redirect('dashboard','refresh');
 				} else {
 					$this->session->set_flashdata('pesan', 'Maaf Password Salah');

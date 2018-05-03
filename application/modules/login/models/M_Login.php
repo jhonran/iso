@@ -23,4 +23,8 @@ class M_Login extends CI_Model
 	function check_data() {
 		return $this->db->get_where('user',array('username' => $this->input->post('username')));
 	}
+
+	function tambah_log_data($data) {
+		return $this->db->insert('t_log_data',$data);
+	}
 }

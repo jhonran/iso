@@ -9,7 +9,10 @@ class M_Operator extends CI_Model {
 
 	function data_operator(){
 		return $this->db->get('user');
-	}	
+	}
+    function data_level_user() {
+        return $this->db->get('t_level_user');
+    }	
 	
 	function tambah_data_operator($data){
         return $this->db->insert('user',$data);
